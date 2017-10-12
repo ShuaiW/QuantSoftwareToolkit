@@ -7,7 +7,7 @@ for license details.
 Created on May 14, 2012
 
 @author: Sourabh Bajaj
-@contact: sourabh@sourabhbajaj.com
+@contact: sourabhbajaj90@gmail.com
 @summary: Backtester
 
 '''
@@ -129,7 +129,7 @@ def _nearest_interger(f_x):
     @param x: single float number
     @return: nearest integer to x
     """
-    if f_x >= 0:
+    if f_x.item() >= 0:
         return np.floor(f_x)
     else :
         return np.ceil(f_x)
@@ -394,11 +394,11 @@ def tradesim( alloc, df_historic, f_start_cash, i_leastcount=1,
                     f_stock_commission=max(f_minimumcommision, f_commision_share*abs(order[sym]))
                     order_type="Buy"
                     if(order[sym]<0):
-                        if(shares[sym]<0):
+                        if(shares[sym].item()<0):
                             order_type="Sell Short"
                         else:
                             order_type="Sell"
-                    elif shares[sym]<0:
+                    elif shares[sym].item()<0:
                         order_type="Buy to Cover"
 
 
